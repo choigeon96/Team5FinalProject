@@ -58,7 +58,7 @@ namespace CompanyManager
 
         private void BindingInboundList()
         {
-            (list, codes) = service.GetInboundList(dtpFrom.Value, dtpTo.Value);
+            (list, codes) = service.GetInboundList(dtpFrom.Value, dtpTo.Value.AddDays(1));
             dgvInbound.DataSource = list;
             selectedIdx.Clear();
         }
