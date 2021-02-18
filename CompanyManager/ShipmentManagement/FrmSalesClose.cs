@@ -59,6 +59,8 @@ namespace CompanyManager
         {
             GetSO();
             RoadCombobox();
+            dtpEnd.Value = dtpfrom.Value.AddDays(30);
+            dtpfrom.Value = dtpfrom.Value.AddDays(-1);
         }
 
         private void btnMaGam_Click(object sender, EventArgs e)
@@ -67,9 +69,9 @@ namespace CompanyManager
             {
                 if (dgvSO[0, i].Value != null && (bool)dgvSO[0, i].Value)
                 {
-                    chklist.Add(list[i]);
-                    chklist[i].up_emp = ((FrmMain)this.MdiParent).LoginInfo.up_emp;
-                    chklist[i].up_date = DateTime.Now;
+                    chklist.Insert(0, list[i]);
+                    chklist[0].up_emp = ((FrmMain)this.MdiParent).LoginInfo.up_emp;
+                    chklist[0].up_date = DateTime.Now;
                 }
                 else
                 {
@@ -77,8 +79,7 @@ namespace CompanyManager
                     chklist.Remove(temp);
                 }
             }
-
-            if(chklist.Count < 1)
+            if (chklist.Count < 1)
             {
                 MessageBox.Show("마감처리할 데이터를 선택해주세요.");
                 return;
@@ -90,6 +91,7 @@ namespace CompanyManager
                 SalesOrderService service = new SalesOrderService();
                 if(service.MaGamProcess(chklist))
                 {
+                    chklist.Clear();
                     MessageBox.Show("마감처리 완료되었습니다.");
                     SOListRoad();
                 }
@@ -130,7 +132,7 @@ namespace CompanyManager
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var sResult = (from so_id in list
-                            where (dtpfrom.Value < so_id.due_date && dtpEnd.Value >= so_id.due_date) &&
+                            where (dtpfrom.Value <= so_id.due_date && dtpEnd.Value >= so_id.due_date) &&
                                   (cboCompany.SelectedValue.ToString().Equals("전체") || so_id.company_name.Equals(cboCompany.SelectedValue.ToString())) &&
                                   (cboDestination.SelectedValue.ToString().Equals("전체") || so_id.company_name.Equals(cboDestination.SelectedValue.ToString())) &&
                                   (cboMKT.SelectedValue.ToString().Equals("전체") || so_id.mkt.Equals(cboMKT.SelectedValue.ToString())) &&

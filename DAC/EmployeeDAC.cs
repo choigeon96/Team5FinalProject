@@ -75,6 +75,7 @@ namespace DAC
 
         }
 
+
         public List<DeptVO> GetDept()
         {
             try
@@ -156,8 +157,8 @@ namespace DAC
         {
             try
             {
-                string sql = @"insert into TBL_Employee (emp_id, emp_password, emp_name, dept_no, hire_date,  ins_emp,  up_emp)
-                               values(@emp_id, @emp_password, @emp_name, @dept_no, @hire_date,  @ins_emp,  @up_emp)";
+                string sql = @"insert into TBL_Employee (emp_id, emp_password, emp_name, dept_no, hire_date,  ins_emp, up_date, up_emp)
+                               values(@emp_id, @emp_password, @emp_name, @dept_no, @hire_date,  @ins_emp, @up_date,  @up_emp)";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@emp_id", evo.emp_id);
@@ -167,6 +168,7 @@ namespace DAC
                     cmd.Parameters.AddWithValue("@hire_date", evo.hire_date);
                     cmd.Parameters.AddWithValue("@ins_emp", evo.up_emp);
                     cmd.Parameters.AddWithValue("@up_emp", evo.up_emp);
+                    cmd.Parameters.AddWithValue("@up_date", evo.up_date);
 
                     int iRows = cmd.ExecuteNonQuery();
                     Dispose();
@@ -192,7 +194,7 @@ namespace DAC
             try
             {
                 string sql = @"update TBL_Employee set emp_password = @emp_password, emp_name = @emp_name, 
-                                                       dept_no = @dept_no, hire_date = @hire_date, up_emp = @up_emp
+                                                       dept_no = @dept_no, hire_date = @hire_date, up_emp = @up_emp, up_date = @up_date
                                where emp_id = @emp_id";
                                 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -203,6 +205,7 @@ namespace DAC
                     cmd.Parameters.AddWithValue("@dept_no", evo.dept_no);
                     cmd.Parameters.AddWithValue("@hire_date", evo.hire_date);
                     cmd.Parameters.AddWithValue("@up_emp", evo.up_emp);
+                    cmd.Parameters.AddWithValue("@up_date", evo.up_date);
 
                     int iRows = cmd.ExecuteNonQuery();
                     Dispose();
@@ -252,5 +255,56 @@ namespace DAC
                 return false;
             }
         }
+
+        public bool ExcelImportEmployee(List<EmployeeVO> temp)
+        {
+            try
+            {
+                string sql = @"insert into TBL_Employee (emp_id, emp_password, emp_name, dept_no, hire_date,  ins_emp, up_date, up_emp)
+                               values(@emp_id, @emp_password, @emp_name, @dept_no, @hire_date,  @ins_emp, @up_date,  @up_emp)";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    int cnt = 0;
+                    cmd.Parameters.Add("@emp_id", SqlDbType.Int);
+                    cmd.Parameters.Add("@emp_password", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@emp_name", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@dept_no", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@ins_emp", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@up_date", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@up_emp", SqlDbType.NVarChar);
+                    cmd.Parameters.Add("@hire_date", SqlDbType.NVarChar);
+
+                    for (int i = 0; i < temp.Count; i++)
+                    {
+                        cmd.Parameters["@emp_id"].Value = temp[i].emp_id;
+                        cmd.Parameters["@emp_password"].Value = temp[i].emp_password;
+                        cmd.Parameters["@emp_name"].Value = temp[i].emp_name;
+                        cmd.Parameters["@dept_no"].Value = temp[i].dept_no;
+                        cmd.Parameters["@ins_emp"].Value = temp[i].up_emp;
+                        cmd.Parameters["@up_date"].Value = temp[i].up_date;
+                        cmd.Parameters["@up_emp"].Value = temp[i].up_emp;
+                        cmd.Parameters["@hire_date"].Value = temp[i].hire_date;
+                        cmd.ExecuteNonQuery();
+                        cnt++;
+                    }
+
+                    Dispose();
+                    if (cnt == temp.Count)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception err)
+            {
+                Dispose();
+
+                //로그 오류
+                Log.WriteError("EmployeeDAC : ExcelImportEmployee", err);
+
+                return false;
+            }
+        }
+
     }
 }

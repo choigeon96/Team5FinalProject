@@ -46,7 +46,7 @@ namespace CompanyManager
             txtPassword.Text = evo.emp_password;
             txtEmpName.Text = evo.emp_name;
             cboDept.SelectedValue = evo.dept_name;
-            dtpEmp.Value = evo.hire_date;
+            dtpEmp.Value = Convert.ToDateTime(evo.hire_date);
         }
 
         public void RoadComboBox()

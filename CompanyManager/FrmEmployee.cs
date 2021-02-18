@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using Util;
@@ -297,6 +300,97 @@ namespace CompanyManager
                     MessageBox.Show("저장에 실패하였습니다.");
                 }
                 
+            }
+        }
+
+        private void btnExcelImport_Click(object sender, EventArgs e)
+        {
+            (DataTable, string) data = Util.CommonExcel.ReadExcelData();
+            //제대로된 파일을 읽어 왔고 데이터가 있다면
+            if (!string.IsNullOrEmpty(data.Item2) && data.Item1.Rows.Count > 0)
+            {
+                //List<EmployeeVO> temp = new List<EmployeeVO>();
+
+                //foreach (DataRow row in data.Item1.Rows)
+                //{
+                //    #region 유효성검사
+                //    if (string.IsNullOrEmpty(row["아이디"].ToString()))
+                //        continue;
+                //    if (string.IsNullOrEmpty(row["패스워드"].ToString()))
+                //        continue;
+                //    if (string.IsNullOrEmpty(row["직원명"].ToString()))
+                //        continue;
+                //    if (string.IsNullOrEmpty(row["부서"].ToString()))
+                //        continue;
+
+                //    #endregion
+                //    try
+                //    {
+                //        EmployeeVO vo = new EmployeeVO
+                //        {
+                //            emp_id = Convert.ToInt32(row["아이디"].ToString()),
+                //            emp_password = row["패스워드"].ToString(),
+                //            emp_name = row["직원명"].ToString(),
+                //            dept_no = row["부서"].ToString(),
+                //            hire_date = Convert.ToDateTime(row["입사일"].ToString()),
+                //            up_date = DateTime.Now,
+                //            up_emp = ((FrmMain)this.MdiParent).LoginInfo.emp_id.ToString()
+                //        };
+                //        temp.Add(vo);
+                //    }
+                //    catch (Exception err)
+                //    {
+                //        MessageBox.Show("엑셀에 등록된 정보를 확인하여주세요");
+                //        break;
+                //    }
+
+                //}
+
+                ////정상적으로 읽은 값이 없다면. 리턴
+                //if (temp.Count < 1)
+                //{
+                //    MessageBox.Show("파일을 정상적으로 읽어오지 못했습니다. 내용을 확인해주세요");
+                //    return;
+                //}
+
+                ////값 등록
+
+                //Service.EmployeeService service = new Service.EmployeeService();
+
+                //if (service.ExcelImportEmployee(temp))
+                //{
+                //    DataRoad();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("직원 정보를 등록하지 못했습니다.");
+                //}
+
+            }
+        }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            CommonExcel.ExportExcel(dgvEmployee);
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Title = "양식 다운로드";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    WebClient wc = new WebClient();
+                    //wc.DownloadFile(@"http://gdfinal.azurewebsites.net/ExcelForm/공창창고등록양식.xlsx", dlg.FileName + ".xlsx");
+                    File.Copy("../../ExcelForm/직원등록양식.xlsx", dlg.FileName + ".xlsx");
+                    Process.Start(dlg.FileName + ".xlsx");
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show("다운로드중 오류가 발생하였습니다.\r\n 다시 시도하여 주십시오.");
+                }
             }
         }
     }

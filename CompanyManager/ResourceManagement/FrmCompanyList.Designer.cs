@@ -43,7 +43,6 @@ namespace CompanyManager
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgvCompany = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             this.btnExcelImport = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -160,14 +159,11 @@ namespace CompanyManager
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = global::CompanyManager.Properties.Resources.Zoom_16x16;
             this.btnSearch.Location = new System.Drawing.Point(1020, 29);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(116, 28);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "조회";
-            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -197,18 +193,6 @@ namespace CompanyManager
             this.label10.TabIndex = 13;
             this.label10.Text = "      업체관리";
             // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(162)))), ((int)(((byte)(175)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Image = global::CompanyManager.Properties.Resources.gear_option;
-            this.button9.Location = new System.Drawing.Point(1131, 89);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(29, 23);
-            this.button9.TabIndex = 14;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
             // btnExcelImport
             // 
             this.btnExcelImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -217,7 +201,7 @@ namespace CompanyManager
             this.btnExcelImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcelImport.Image = global::CompanyManager.Properties.Resources.Previous_16x16;
             this.btnExcelImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcelImport.Location = new System.Drawing.Point(1040, 89);
+            this.btnExcelImport.Location = new System.Drawing.Point(1074, 89);
             this.btnExcelImport.Name = "btnExcelImport";
             this.btnExcelImport.Size = new System.Drawing.Size(86, 23);
             this.btnExcelImport.TabIndex = 7;
@@ -234,7 +218,7 @@ namespace CompanyManager
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Image = global::CompanyManager.Properties.Resources.pencil_16;
             this.btnRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegister.Location = new System.Drawing.Point(747, 89);
+            this.btnRegister.Location = new System.Drawing.Point(781, 89);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(56, 23);
             this.btnRegister.TabIndex = 5;
@@ -251,7 +235,7 @@ namespace CompanyManager
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = global::CompanyManager.Properties.Resources.Cancel_16x16;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(809, 89);
+            this.btnDelete.Location = new System.Drawing.Point(843, 89);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(57, 23);
             this.btnDelete.TabIndex = 6;
@@ -268,7 +252,7 @@ namespace CompanyManager
             this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDownload.Image = ((System.Drawing.Image)(resources.GetObject("btnDownload.Image")));
             this.btnDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDownload.Location = new System.Drawing.Point(872, 89);
+            this.btnDownload.Location = new System.Drawing.Point(906, 89);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(102, 23);
             this.btnDownload.TabIndex = 33;
@@ -285,7 +269,7 @@ namespace CompanyManager
             this.btnExcelExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcelExport.Image = global::CompanyManager.Properties.Resources.New_16x16;
             this.btnExcelExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcelExport.Location = new System.Drawing.Point(980, 89);
+            this.btnExcelExport.Location = new System.Drawing.Point(1014, 89);
             this.btnExcelExport.Name = "btnExcelExport";
             this.btnExcelExport.Size = new System.Drawing.Size(54, 23);
             this.btnExcelExport.TabIndex = 32;
@@ -302,7 +286,6 @@ namespace CompanyManager
             this.Controls.Add(this.btnExcelExport);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.btnExcelImport);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.panel2);
@@ -319,7 +302,6 @@ namespace CompanyManager
 
         #endregion
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnExcelImport;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Panel panel2;

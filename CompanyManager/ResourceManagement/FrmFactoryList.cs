@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using Util;
@@ -289,7 +290,8 @@ namespace CompanyManager
             {
                 try
                 {
-                    File.Copy("../../ExcelForm/공장창고등록양식.xlsx", dlg.FileName + ".xlsx");
+                    WebClient wc = new WebClient();
+                    wc.DownloadFile(@"http://gdfinal.azurewebsites.net/ExcelForm/공창창고등록양식.xlsx", dlg.FileName + ".xlsx");
                     Process.Start(dlg.FileName + ".xlsx");
                 }
                 catch (Exception err)
