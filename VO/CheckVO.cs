@@ -20,5 +20,6 @@ namespace VO
         public string bad_comment { get; set; }
 
         public string emp { get; set; }
+        public string emp_name { get; set; }
     }
 }

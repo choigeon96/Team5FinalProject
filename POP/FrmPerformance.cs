@@ -84,6 +84,16 @@ namespace POP
             CurrentPage = 1;
             RefreshPagination();
             RebindGridForPageChange();
+
+
+           //// dataGridView1.RowHeadersVisible = true;
+           // dataGridView1.RowHeadersWidth = 200;
+
+           // //dataGridView2.RowHeadersVisible = true;
+           // dataGridView2.RowHeadersWidth = 200;
+
+           //// dataGridView3.RowHeadersVisible = true;
+           // dataGridView3.RowHeadersWidth = 200;
         }
 
         private void Control()
@@ -147,8 +157,9 @@ namespace POP
         private void GetdgvColumn()
         {
             #region 작업지시
-            CommonUtil.SetDGVDesign_Num(dataGridView1);
+            CommonUtil.SetDGVDesign_Num1(dataGridView1);
             dataGridView1.ColumnHeadersHeight = 50;
+            
 
             CommonUtil.AddGridTextColumn(dataGridView1, "번호", "wo_id", 445);
             CommonUtil.AddGridTextColumn(dataGridView1, "품목 코드", "item_id", 445);
@@ -167,11 +178,12 @@ namespace POP
 
             CommonUtil.AddGridTextColumn(dataGridView1, "번호", "machine_id", 130, false);
             CommonUtil.AddGridTextColumn(dataGridView1, "번호", "machine_name", 130, false);
+            
             #endregion
             #region 작업시작
-            CommonUtil.SetDGVDesign_Num(dataGridView2);
+            CommonUtil.SetDGVDesign_Num1(dataGridView2);
             dataGridView2.ColumnHeadersHeight = 50;
-
+            
             CommonUtil.AddGridTextColumn(dataGridView2, "번호", "wo_id", 445);
             CommonUtil.AddGridTextColumn(dataGridView2, "품목 코드", "item_id", 445);
             CommonUtil.AddGridTextColumn(dataGridView2, "계획수량", "wo_qty", 445);
@@ -189,11 +201,12 @@ namespace POP
 
             CommonUtil.AddGridTextColumn(dataGridView2, "번호", "machine_id", 130, false);
             CommonUtil.AddGridTextColumn(dataGridView2, "번호", "machine_name", 130, false);
+       
             #endregion
             #region 작업종료
-            CommonUtil.SetDGVDesign_Num(dataGridView3);
+            CommonUtil.SetDGVDesign_Num1(dataGridView3);
             dataGridView3.ColumnHeadersHeight = 50;
-
+            
             CommonUtil.AddGridTextColumn(dataGridView3, "번호", "wo_id", 445);
             CommonUtil.AddGridTextColumn(dataGridView3, "품목 코드", "item_id", 445);
             CommonUtil.AddGridTextColumn(dataGridView3, "계획수량", "wo_qty", 445);
@@ -211,6 +224,7 @@ namespace POP
 
             CommonUtil.AddGridTextColumn(dataGridView3, "번호", "machine_id", 130, false);
             CommonUtil.AddGridTextColumn(dataGridView3, "번호", "machine_name", 130, false);
+         
             #endregion
         }
 

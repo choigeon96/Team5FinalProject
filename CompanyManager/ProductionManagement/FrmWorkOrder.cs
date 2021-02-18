@@ -20,6 +20,9 @@ namespace CompanyManager
         {
             InitializeComponent();
             CommonUtil.SetInitGridView(dgvWorkOrder);
+            CommonUtil.SetDGVDesign(dgvWorkOrder);
+            CommonUtil.SetDGVDesign_Num(dgvWorkOrder);
+            dgvWorkOrder.RowHeadersVisible = true;
             CommonUtil.SetDGVDesign_CheckBox(dgvWorkOrder);
             CommonUtil.AddGridTextColumn(dgvWorkOrder, "작업지시번호", "wo_id", 80, true, DataGridViewContentAlignment.MiddleCenter);
             CommonUtil.AddGridTextColumn(dgvWorkOrder, "계획시작일", "wo_sdate", 80, true, DataGridViewContentAlignment.MiddleCenter);

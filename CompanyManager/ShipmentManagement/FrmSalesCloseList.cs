@@ -28,7 +28,8 @@ namespace CompanyManager
         {
             GetSOList();
             RoadCombobox();
-
+            dtpto.Value = dtpfrom.Value.AddDays(30);
+            dtpfrom.Value = dtpfrom.Value.AddDays(-1);
         }
 
         private void GetSOList()
@@ -97,7 +98,7 @@ namespace CompanyManager
         {
             
                 var sResult = (from so_id in list
-                               where (dtpfrom.Value <= so_id.CloseDate && dtpto.Value >= so_id.due_date) &&
+                               where (dtpfrom.Value <= so_id.CloseDate && dtpto.Value >= so_id.CloseDate) &&
                                      (cboCompany.SelectedValue.ToString().Equals("전체") || so_id.company_name.Equals(cboCompany.SelectedValue.ToString())) &&
                                      (cboDestination.SelectedValue.ToString().Equals("전체") || so_id.company_name.Equals(cboDestination.SelectedValue.ToString())) &&
                                      (cboMKT.SelectedValue.ToString().Equals("전체") || so_id.mkt.Equals(cboMKT.SelectedValue.ToString())) &&
@@ -113,9 +114,9 @@ namespace CompanyManager
             {
                 if (dgvSOEND[0, i].Value != null && (bool)dgvSOEND[0, i].Value)
                 {
-                    chklist.Add(list[i]);
-                    chklist[i].up_emp = ((FrmMain)this.MdiParent).LoginInfo.up_emp;
-                    chklist[i].up_date = DateTime.Now;
+                    chklist.Insert(0,list[i]);
+                    chklist[0].up_emp = ((FrmMain)this.MdiParent).LoginInfo.up_emp;
+                    chklist[0].up_date = DateTime.Now;
                 }
                 else
                 {

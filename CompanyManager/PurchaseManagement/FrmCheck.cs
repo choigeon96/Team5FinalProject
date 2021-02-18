@@ -24,7 +24,7 @@ namespace CompanyManager
             CommonUtil.SetDGVDesign_Num(dgvCheck);
             CommonUtil.AddGridTextColumn(dgvCheck, "검사번호", "ch_id", 60,true,DataGridViewContentAlignment.MiddleCenter);
             CommonUtil.AddGridTextColumn(dgvCheck, "검사일", "ins_date", 80, true, DataGridViewContentAlignment.MiddleCenter);
-            CommonUtil.AddGridTextColumn(dgvCheck, "업체명", "company_name",120);
+            CommonUtil.AddGridTextColumn(dgvCheck, "담당자", "emp_name",120);
             CommonUtil.AddGridTextColumn(dgvCheck, "품목", "item_id", 120);
             CommonUtil.AddGridTextColumn(dgvCheck, "품명", "item_name", 120);
             CommonUtil.AddGridTextColumn(dgvCheck, "단위", "unit", 60, true, DataGridViewContentAlignment.MiddleCenter);

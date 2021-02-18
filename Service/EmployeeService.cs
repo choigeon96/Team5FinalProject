@@ -52,10 +52,11 @@ namespace Service
             return dac.UpdateDept(list);
         }
 
-        //public bool DeleteCommonCode(List<string> codeList)
-        //{
-        //    CodeDAC dac = new CodeDAC();
-        //    return dac.DeleteCommonCode(codeList);
-        //}
+        public bool ExcelImportEmployee(List<EmployeeVO> temp)
+        {
+            EmployeeDAC dac = new EmployeeDAC();
+            return dac.ExcelImportEmployee(temp);
+        }
+
     }
 }

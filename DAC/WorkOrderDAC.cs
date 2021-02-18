@@ -141,6 +141,7 @@ namespace DAC
             {
                 using (SqlDataAdapter da = new SqlDataAdapter(sql,conn))
                 {
+                    da.SelectCommand.Parameters.AddWithValue("@wo_id", woID);
                     da.Fill(dt);
                     conn.Close();
                     return dt;
